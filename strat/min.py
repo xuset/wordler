@@ -36,8 +36,6 @@ class MinStrat:
         scores = Counter()
         for possible in self.possibles:
             picks = dictionary
-            if round == 1:
-                picks = (pick for pick in picks if 1 <= sum(count > 1 for count in Counter(self.chosen[0] + pick).values()))
             for pick in picks:
                 pick_state = state.copy().play(possible, pick)
                 scores[pick] += sum(1 for p in self.possibles if pick_state.is_possible(p))
